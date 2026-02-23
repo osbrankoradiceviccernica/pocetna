@@ -14,7 +14,26 @@
     <link rel="stylesheet" id="graduate-blue-css" href="wp-content/themes/graduate/assets/css/blue.min.css" type="text/css" media="all">
 
     <style>
-        /* Fix za prikaz dugmeta na mobilnom */
+        /* Stil za dugme ispod vesti */
+        .btn-sve-vesti {
+            display: inline-block;
+            background: #334f74;
+            color: #fff !important;
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-sve-vesti:hover { background: #E94B4C; }
+
+        /* Stilovi za vest koja se ucitava */
+        .obavestenje-kartica { background: #fff; border: 1px solid #eee; padding: 25px; margin-bottom: 20px; border-bottom: 4px solid #334f74; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left; }
+        .obavestenje-datum { display: inline-block; background: #334f74; color: #fff; padding: 4px 12px; font-size: 13px; border-radius: 3px; margin-bottom: 15px; }
+        .vazno { border-bottom-color: #E94B4C; }
+        .img-objava { max-width: 100%; height: auto; border-radius: 4px; margin-top: 15px; }
+
         #sidr-left-top-button {
             display: none;
             position: absolute;
@@ -33,7 +52,6 @@
 
 <body class="home page-template-default page wp-custom-logo wide no-sidebar">
     <div id="page" class="site">
-        
         <header id="masthead" class="site-header" role="banner">
             <div class="container">
                 <div class="site-branding pull-left">
@@ -79,6 +97,12 @@
                         <div class="entry-content">
                             <p>Основна школа „Бранко Радичевић“ Церница.</p>
                             <p>Сајт је у изради...</p>
+                            
+                            <hr style="margin: 40px 0;">
+
+                            <div id="auto-obavestenje" style="text-align: center;">
+                                <p><i class="fa fa-spinner fa-spin"></i> Учитавање најновијег обавештења...</p>
+                            </div>
                         </div>
                     </article>
                 </main>
@@ -100,6 +124,31 @@
     <script src="wp-content/themes/graduate/assets/js/custom.min.js"></script>
 
     <script>
+        // POVLAČENJE VESTI ZA BRANKA
+        fetch('obavestenja.html')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+                const prvaVesti = doc.querySelector('.obavestenje-kartica');
+                
+                if (prvaVesti) {
+                    const kontejner = document.getElementById('auto-obavestenje');
+                    kontejner.innerHTML = `
+                        <h2 style="color: #334f74; margin-bottom: 25px;">Последње са огласне табле</h2>
+                        <div style="max-width: 800px; margin: 0 auto;">
+                            ${prvaVesti.outerHTML}
+                            <a href="obavestenja.html" class="btn-sve-vesti">Види сва обавештења</a>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('auto-obavestenje').innerHTML = "";
+                }
+            })
+            .catch(err => {
+                document.getElementById('auto-obavestenje').style.display = "none";
+            });
+
         // Inicijalizacija mobilnog menija
         jQuery(document).ready(function($) {
             $('#sidr-left-top-button').sidr({
