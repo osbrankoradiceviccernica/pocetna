@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>ОШ Петар Петровић Његош - Почетна</title>
+    <title>ОШ Бранко Радичевић - Церница</title>
     
-    <link rel="stylesheet" id="wp-block-library-css" href="https://ppnjegos.github.io/mywordpress/wp-includes/css/dist/block-library/style.min.css?ver=6.4.2" type="text/css" media="all">
-    <link rel="stylesheet" id="graduate-fonts-css" href="https://ppnjegos.github.io/mywordpress/wp-content/fonts/3b42a6b44a236a93b61be41a53a69431.css" type="text/css" media="all">
-    <link rel="stylesheet" id="font-awesome-css" href="https://ppnjegos.github.io/mywordpress/wp-content/themes/graduate/assets/plugins/css/font-awesome.min.css?ver=6.4.2" type="text/css" media="all">
-    <link rel="stylesheet" id="graduate-style-css" href="https://ppnjegos.github.io/mywordpress/wp-content/themes/graduate/style.css?ver=6.4.2" type="text/css" media="all">
-    <link rel="stylesheet" id="graduate-blue-css" href="https://ppnjegos.github.io/mywordpress/wp-content/themes/graduate/assets/css/blue.min.css?ver=6.4.2" type="text/css" media="all">
+    <link rel="stylesheet" id="wp-block-library-css" href="wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+    <link rel="stylesheet" id="graduate-fonts-css" href="wp-content/fonts/3b42a6b44a236a93b61be41a53a69431.css" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="wp-content/themes/graduate/assets/plugins/css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" id="graduate-style-css" href="wp-content/themes/graduate/style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="graduate-blue-css" href="wp-content/themes/graduate/assets/css/blue.min.css" type="text/css" media="all">
     
     <style>
         /* Stil za dugme ispod vesti */
@@ -34,7 +34,7 @@
             margin-top: 15px;
         }
         
-        /* Kopirani stil kartice da bi izgledala isto kao na originalnoj strani */
+        /* Kartica stil */
         .obavestenje-kartica { background: #fff; border: 1px solid #eee; padding: 25px; margin-bottom: 20px; border-bottom: 4px solid #334f74; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left; }
         .obavestenje-datum { display: inline-block; background: #334f74; color: #fff; padding: 4px 12px; font-size: 13px; border-radius: 3px; margin-bottom: 15px; }
         .vazno { border-bottom-color: #E94B4C; }
@@ -49,12 +49,11 @@
                 <div class="site-branding pull-left">
                     <div class="site-logo">
                         <a href="index.html" class="custom-logo-link">
-                            <img width="200" height="70" src="https://ppnjegos.github.io/mywordpress/wp-content/uploads/2023/12/logo.png" class="custom-logo" alt="Logo">
+                            <img width="200" height="70" src="logo.png" class="custom-logo" alt="ОШ Бранко Радичевић">
                         </a>
                     </div>
                     <div id="site-header">
-                       
-                         <h1 class="site-title"><a href="index.html">ОШ Петар Петровић Његош</a></h1>
+                         <h1 class="site-title"><a href="index.html">ОШ Бранко Радичевић</a></h1>
                     </div>
                 </div>
             </div>
@@ -80,8 +79,8 @@
                         </header>
 
                         <div class="entry-content">
-                            <p>Петар Петровић Његош – Горње Кусце</p>
-                            <p>Сајт је у изради...</p>
+                            <p>Бранко Радичевић – Церница</p>
+                            <p>Добродошли на званичну интернет презентацију наше школе.</p>
 
                             <hr style="margin: 40px 0;">
 
@@ -97,7 +96,7 @@
         <footer id="colophon" class="site-footer">
             <div class="site-info clear">
                 <div class="container">
-                    <p>Copyright &copy; 2026 Petar Petrovic Njegos. All Rights Reserved</p>
+                    <p>Copyright &copy; 2026 ОШ Бранко Радичевић. All Rights Reserved</p>
                 </div>
             </div>
         </footer>
@@ -109,7 +108,6 @@
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, 'text/html');
-                // Pronalazi prvu karticu na stranici obavestenja.html
                 const prvaVesti = doc.querySelector('.obavestenje-kartica');
                 
                 if (prvaVesti) {
@@ -121,6 +119,8 @@
                             <a href="obavestenja.html" class="btn-sve-vesti">Види сва обавештења</a>
                         </div>
                     `;
+                } else {
+                    document.getElementById('auto-obavestenje').innerHTML = "<p>Тренутно нема нових обавештења.</p>";
                 }
             })
             .catch(err => {
@@ -128,7 +128,7 @@
             });
     </script>
 
-    <script src="https://ppnjegos.github.io/mywordpress/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
-    <script src="https://ppnjegos.github.io/mywordpress/wp-content/themes/graduate/assets/js/navigation.min.js"></script>
+    <script src="wp-includes/js/jquery/jquery.min.js"></script>
+    <script src="wp-content/themes/graduate/assets/js/navigation.min.js"></script>
 </body>
 </html>
