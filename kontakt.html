@@ -8,6 +8,7 @@
     <link rel="stylesheet" id="wp-block-library-css" href="wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
     <link rel="stylesheet" id="graduate-fonts-css" href="wp-content/fonts/3b42a6b44a236a93b61be41a53a69431.css" type="text/css" media="all">
     <link rel="stylesheet" id="font-awesome-css" href="wp-content/themes/graduate/assets/plugins/css/font-awesome.min.css" type="text/css" media="all">
+    <link rel="stylesheet" id="jquery-sidr-light-css" href="wp-content/themes/graduate/assets/plugins/css/jquery.sidr.light.min.css" type="text/css" media="all">
     <link rel="stylesheet" id="graduate-style-css" href="wp-content/themes/graduate/style.css" type="text/css" media="all">
     <link rel="stylesheet" id="graduate-blue-css" href="wp-content/themes/graduate/assets/css/blue.min.css" type="text/css" media="all">
     
@@ -19,19 +20,22 @@
         .info-stavka strong { color: #334f74; margin-right: 5px; }
         .map-container { border: 5px solid #eee; border-radius: 5px; overflow: hidden; height: 450px; width: 100%; margin-top: 20px; }
         .map-container iframe { width: 100% !important; height: 100% !important; border: 0; }
+        
+        #sidr-left-top-button { display: none; position: absolute; top: 20px; right: 20px; font-size: 24px; color: #334f74; z-index: 9999; }
+        @media screen and (max-width: 768px) {
+            #sidr-left-top-button { display: block; }
+            .main-navigation { display: none; }
+        }
     </style>
 </head>
 
 <body class="page-template-default page wp-custom-logo wide no-sidebar">
     <div id="page" class="site">
-        
         <header id="masthead" class="site-header" role="banner">
             <div class="container">
                 <div class="site-branding pull-left">
                     <div class="site-logo">
-                        <a href="index.html" class="custom-logo-link" rel="home">
-                            <img width="200" height="70" src="logo.png" class="custom-logo" alt="ОШ Бранко Радичевић">
-                        </a>
+                        <a href="index.html"><img width="200" height="70" src="logo.png" class="custom-logo" alt="Logo"></a>
                     </div>
                     <div id="site-header">
                         <h1 class="site-title"><a href="index.html">ОШ Бранко Радичевић</a></h1>
@@ -51,58 +55,50 @@
             </nav>
         </header>
 
+        <nav id="sidr-left-top" class="mobile-menu sidr left">
+            <ul>
+                <li><a href="index.html">Почетна</a></li>
+                <li><a href="kontakt.html">Контакт</a></li>
+                <li><a href="o-skoli.html">О школи</a></li>
+                <li><a href="obavestenja.html">Обавештења</a></li>
+            </ul>
+        </nav>
+        <a id="sidr-left-top-button" href="#sidr-left-top"><i class="fa fa-bars"></i></a>
+
         <div id="content" class="site-content">
             <div class="container page-section">
-                <div id="primary" class="content-area">
-                    <main id="main" class="site-main" role="main">
-                        <article class="page type-page status-publish hentry">
-                            
-                            <header class="entry-header">
-                                <h1 class="entry-title">Контакт информације</h1>
-                            </header>
-                            
-                            <div class="entry-content">
-                                <div class="kontakt-info-box">
-                                    <div class="info-stavka">
-                                        <i class="fa fa-map-marker"></i>
-                                        <span><strong>Адреса:</strong> Церница, 38250 Гњилане</span>
-                                    </div>
-                                    <div class="info-stavka">
-                                        <i class="fa fa-phone"></i>
-                                        <span><strong>Телефон:</strong> 065-///////</span>
-                                    </div>
-                                    <div class="info-stavka">
-                                        <i class="fa fa-envelope"></i>
-                                        <span><strong>Е-пошта:</strong> <a href="mailto:osbrankoradiceviccernica@gmail.com">osbrankoradiceviccernica@gmail.com</a></span>
-                                    </div>
-                                    <div class="info-stavka">
-                                        <i class="fa fa-clock-o"></i>
-                                        <span><strong>Радно време:</strong> Понедељак - Петак: 09:00 - 15:00</span>
-                                    </div>
-                                </div>
-
-                                <h3 style="color: #334f74; margin-top: 40px;"><i class="fa fa-globe"></i> Наша локација на мапи</h3>
-                                <div class="map-container">
-                                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5890.411652782743!2d21.4199066462875!3d42.423353577829495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13548b00442528bf%3A0x942f5566b4df914c!2z0J7RgdC90L7QstC90LAg0YjQutC-0LvQsCAi0JHRgNCw0L3QutC-INCg0LDQtNC40YfQtdCy0LjRmyIg0KbQtdGA0L3QuNGG0LA!5e0!3m2!1sen!2s!4v1771868840980!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
+                <main id="main" class="site-main">
+                    <article class="page type-page status-publish hentry">
+                        <header class="entry-header"><h1 class="entry-title">Контакт информације</h1></header>
+                        <div class="entry-content">
+                            <div class="kontakt-info-box">
+                                <div class="info-stavka"><i class="fa fa-map-marker"></i><span><strong>Адреса:</strong> Церница, 38250 Гњилане</span></div>
+                                <div class="info-stavka"><i class="fa fa-phone"></i><span><strong>Телефон:</strong> 065-///////</span></div>
+                                <div class="info-stavka"><i class="fa fa-envelope"></i><span><strong>Е-пошта:</strong> osbrankoradiceviccernica@gmail.com</span></div>
                             </div>
-
-                        </article>
-                    </main>
-                </div>
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11796.657599183424!2d21.41723225!3d42.42289435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354f2858032777b%3A0x6b89694b29b31d05!2sCernica!5e0!3m2!1sen!2s!4v1708710000000!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </article>
+                </main>
             </div>
         </div>
 
-        <footer id="colophon" class="site-footer" role="contentinfo">
+        <footer id="colophon" class="site-footer">
             <div class="site-info clear">
-                <div class="container">
-                    <p>Copyright © 2026 ОШ Бранко Радичевић. All Rights Reserved</p>
-                </div>
+                <div class="container"><p>Copyright © 2026 ОШ Бранко Радичевић. All Rights Reserved</p></div>
             </div>
         </footer>
     </div>
-
     <script src="wp-includes/js/jquery/jquery.min.js"></script>
+    <script src="wp-content/themes/graduate/assets/plugins/js/jquery.sidr.min.js"></script>
     <script src="wp-content/themes/graduate/assets/js/navigation.min.js"></script>
+    <script src="wp-content/themes/graduate/assets/js/custom.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('#sidr-left-top-button').sidr({ name: 'sidr-left-top', side: 'left' });
+        });
+    </script>
 </body>
 </html>
